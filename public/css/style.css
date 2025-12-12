@@ -1,0 +1,412 @@
+body{
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.logo {
+    position: relative;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.menu ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li{
+    margin: 0 15px;
+    font-size: 0.8rem;
+}
+
+.menu ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    font-family: 'Exo 2';
+    font-weight: 300;
+}
+
+.menu ul li a i{
+    margin-right: 5px;
+}
+
+.menu ul li a:hover {
+    color: #ffcc00;
+}
+
+.btn-iniciar-registrar {
+    background-color: #FDB813; /* color sol */
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    animation: bordeParpadeanteSol 1.5s infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes bordeParpadeanteSol {
+    0%, 100% {
+        box-shadow: 0 0 5px 2px rgba(253, 184, 19, 0.7); /* amarillo sol */
+    }
+    50% {
+        box-shadow: 0 0 15px 5px rgba(255, 193, 7, 1); /* más brillante */
+    }
+}
+
+.btn-iniciar-registrar:hover {
+    color: black;
+    animation: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 4px #FDB813;
+}
+
+.btn-logout{
+    background-color: #FDB813; /* color sol */
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: -10px;
+
+    animation: bordeParpadeanteSol 1.5s infinite;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover{
+    animation: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 4px #FDB813;
+}
+
+
+.inicio{
+    margin-top: 120px;
+    height: calc(100vh - 120px); 
+    background-image: url('https://images.unsplash.com/photo-1683510176947-8893a6603f15?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inicio-cont{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.inicio-cont p{
+    width: 900px;
+    font-size: 0.9rem;
+}
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    margin: 150px auto 0 auto;
+    padding: 30px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #ffffffcc; 
+    backdrop-filter: blur(3px);
+}
+
+.loginForm h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+/* CAMPOS */
+.campos-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.campos-login label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.campos-login label i {
+    margin-right: 6px;
+}
+
+/* Inputs */
+.campos-login input {
+    width: 95%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.campos-login input:focus {
+    border-color: #FDB813;
+    box-shadow: 0 0 8px #FDB813;
+}
+
+/* BOTONES + LINK */
+.botones-login {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.botones-login a {
+    color: #FDB813;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botones-login a:hover {
+    color: black;
+}
+
+.botones-login button {
+    background-color: #FDB813;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botones-login button:hover {
+    background-color: #e3a004;
+    transform: scale(1.05);
+}
+
+/* SECCIÓN REGISTER */
+.register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.register-cont {
+    display: flex;
+    flex-direction: column;
+    width: 650px; /* un poco más chico que el login */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    margin: 150px auto 0 auto;
+    padding: 30px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #ffffffcc;
+    backdrop-filter: blur(3px);
+}
+
+.register-cont h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+/* CAMPOS */
+.campos-register {
+    width: 100%; /* MAS ESTRECHO QUE EL LOGIN */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.campos-register label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.campos-register label i {
+    margin-right: 6px;
+}
+
+/* Inputs */
+.campos-register input {
+    width: 100%; /* input más angosto */
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.campos-register input:focus {
+    border-color: #FDB813;
+    box-shadow: 0 0 8px #FDB813;
+}
+
+/* BOTONES */
+.botones-register {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.botones-register a {
+    color: #FDB813;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botones-register a:hover {
+    color: black;
+}
+
+.botones-register button {
+    background-color: #FDB813;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botones-register button:hover {
+    background-color: #e3a004;
+    transform: scale(1.05);
+}
+
+/* Botón hamburguesa */
+.toggle-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #f1c40f;
+    color: #000;
+    border: none;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 999;
+    transition: 0.3s;
+}
+
+.toggle-menu:hover {
+    background: #ffd84d;
+}
+
+/* Menú vertical */
+.menu-vertical {
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    border-right: 3px solid #f1c40f;
+    position: fixed;
+    top: 0;
+    left: -250px; /* OCULTO */
+    transition: left 0.4s ease;
+    padding-top: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.menu-vertical.activo {
+    left: 0; /* MOSTRADO */
+}
+
+.logo-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.logo-menu img {
+    width: 120px; 
+}
+
+/* Opciones */
+.opciones-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.opciones-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 25px;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+    border-left: 5px solid transparent;
+}
+
+.opciones-menu a i {
+    color: #f1c40f;
+}
+
+.opciones-menu a:hover {
+    background: #fff5c4;
+    border-left: 5px solid #f1c40f;
+    font-weight: bold;
+}
