@@ -73,7 +73,7 @@ class UsuarioController
             'nombre_apellido.required' => '[SISTEMA]: El campo nombre y apellido es requerido.',
             'nombre_apellido.min' => '[SISTEMA]: El campo nombre y apellido debe tener minimo 5 caracteres.',
             'nombre_apellido.max' => '[SISTEMA]: El campo nombre y apellido debe tener maximo 100 caracteres.',
-            'nombre_apellido.regex' => '[SISTEMA]: El campo nombre y apellido puede contener: letras, numeros y espacios.',
+            'nombre_apellido.regex' => '[SISTEMA]: El campo nombre y apellido puede contener: letras y espacios.',
 
             'gmail.required' => '[SISTEMA]: El campo gmail es requerido.',
             'gmail.email' => '[SISTEMA]: El campo gmail debe tener un formato valido.',
@@ -113,6 +113,45 @@ class UsuarioController
         return response()->json([
             'success' => true,
             'message' => '[SISTEMA]: Usuario creado exitosamente.'
+        ]);
+    }
+
+    //FUNCION PARA CREAR UN USUARIO DESDE EL PANEL DE ADMINISTRADOR
+    public function crearUsuario(){
+        $validator = Validator::make($request->all(),[
+            'nombre_apellido' => 'required|min:5|max:100|regex:/^[\pL\s]+$/u',
+            'gmail' => 'required|email|unique:usuarios, gmail',
+            'telefono' => 'required|digits:10',
+            'clave' => 'required|min:8|max:100',
+            'rclave' => 'required|same:clave',
+            'estado' => 'required|in:Activo,Inactivo',
+            'rol_id' => 'required|integer|exists:roles,id',
+        ],[
+            'nombre_apellido.required' => "El campo nombre y apellido es obligatorio.",
+            'nombre_apellido.min' => "El campo nombre y apellido debe tener por lo menos 5 caracteres.",
+            'nombre_apellido.max' => "El campo nombre y apellido puede tener como maximo 100 caracteres.",
+            'nombre_apellido.regex' => "El campo nombre y apellido puede tener solo letras y espacios.",
+
+            'gmail.required' => "El campo gmail es obligatorio.",
+            'gmail.email' => "El campo gmail debe tener un formato valido.",
+            'gmail.unique' => "El gmail ingresado ya esta en uso, porfavor utilice otro.",
+
+            'telefono.required' => "El campo telefono es obligatorio.",
+            "telefono.digits" => "El campo telefono debe contener 10 digitos (2954 + numero)",
+
+            'clave.required' => "El campo contraseña es obligatorio.",
+            'clave.min' => "La contraseña debe tener por los menos 8 caracteres.",
+            'clave.max' => "La contrasela debe tener como maximo 100 caracteres.",
+            
+            'rclave.required' => "El campo repetir clave es obligatorio.",
+            'rclave.same' => "Las contraseñas deben ser iguales.",
+
+            'estado.required' => "El campo estado es obligatorio.",
+            'estado.in' => "Los estados de usuario pueden ser Activo o Inactivo.",
+
+            'rol_id.required' => "El campo rol es obligatorio.",
+            'rol_id.integer' => "El campo rol debe ser un numero.",
+            'rol_id.exists' => "El campo rol debe tener un valor existente."
         ]);
     }
 }

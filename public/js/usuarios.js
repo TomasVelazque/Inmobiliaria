@@ -1,6 +1,7 @@
 $(document).ready(function(){
     registrarUsuario();
     iniciarSession();
+    crearUsuario();
 })
 
 function registrarUsuario(){
@@ -108,6 +109,66 @@ function iniciarSession(){
                     icon: "error",
                     title: "ERROR",
                     text: "Ha ocurrido un error inesperado.",
+                });
+            }
+        })
+    })
+}
+
+//ABRIR MODAL
+$('#btn-crear-usuario').on("click", function(){
+    $('#createModal').fadeIn(200);
+});
+
+function crearUsuario(){
+    const formulario = $('#formCrearUsuario');
+    if(formulario.length === 0) return;
+
+    formulario.on("submit", function(e){
+        //PREVENIMOS EL ENVIO POR DEFECTO
+        e.preventDefault();
+
+        //CREAMOS EL FORM DATA
+        let formData = {
+            nombre_apellido: $("#createNombreyApellido").val(),
+            gmail: $("#createGmail").val(),
+            telefono: $("#createTelefono").val(),
+            estado: $("#createEstado").val(),
+            rol_id: $("#createRol").val(),
+            clave: $("#createClave").val(),
+            rclave: ("#createRClave").val(),
+        }
+
+        //AJAX
+        $.ajax({
+            url: "crearUsuario",
+            method: "POST",
+            data: formData,
+            dataType: "json",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            },
+            success: function(res){
+                if(res.success){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Usuario creado exitosamente",
+                        text: res.message,
+                    });
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Ha ocurrido un error",
+                        text: res.message,
+                    });
+                }
+            },
+            error: function(xhr){
+                console.log(xhr.responseText)
+                Swal.fire({
+                    icon: "error",
+                    title: "Ha ocurrido un error inesperado.",
+                    text: res.message,
                 });
             }
         })

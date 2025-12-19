@@ -27,6 +27,73 @@
         </ul>
     </nav>
 
+    <div class="tabla-cont">
+        <h1>ADMINISTRADOR DE USUARIOS 📝</h1>
+        <button class="btn-crear-usuario" id="btn-crear-usuario">CREAR USUARIO</button>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre y Apellido</th>
+                    <th>Gmail</th>
+                    <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Rol</th>
+                    <th>Fecha de Creacion</th>
+                </tr>
+            </thead>
+            <tbody id="tabla_usuarios"></tbody>
+        </table>
+    </div>
+
+    <div class="createModal" id="createModal">
+	<div class="modal-content">
+		<h2>CREAR USUARIO</h2>
+		<form id="formCrearUsuario">
+			<div class="form-group">
+				<label for="createNombreyApellido">Nombre y Apellido:</label>
+				<input type="text" id="createNombreyApellido" placeholder="Ingrese el nombre y apellido." required>
+			</div>
+			<div class="form-group">
+				<label for="createGmail">Gmail:</label>
+				<input type="text" id="createGmail" placeholder="Ingrese el gmail." required>
+			</div>
+			<div class="form-group">
+				<label for="createTelefono">Telefono:</label>
+				<input type="text" id="createTelefono" placeholder="Ingrese el numero de telefono (2954)" required>
+			</div>
+			<div class="form-group">
+				<label for="createEstado"></label>
+				<select id="createEstado" required>
+					<option value="Activo">Activo</option>
+					<option value="Inactivo">Inactivo</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="createRol"></label>
+				<select id="createRol">
+					<option value="">Seleccione un rol.</option>
+				</select>
+			</div>
+            	<div class="form-group">
+				<label for="createClave">Contraseña:</label>
+				<input type="text" id="createClave" placeholder="Ingrese una contraseña." required>
+			</div>
+            	<div class="form-group">
+				<label for="createRClave">Repetir contraseña:</label>
+				<input type="text" id="createRClave" placeholder="Repita la contraseña." required>
+			</div>
+			 <div class="modal-buttons">
+                <button type="button"class="cancelar-btn" onclick="cerrarModalCrear()">Cancelar</button>
+                <button type="submit" class="btn-crear-usuario">Crear Libro</button>
+            </div>
+		</form>
+	</div>
+</div>
+
+
+
+    
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const btn = document.getElementById('toggleMenu');
@@ -36,5 +103,6 @@
         menu.classList.toggle('activo');
     });
 </script>
+<script src="{{asset('js/usuarios.js') }}"></script>
 </body>
 </html>

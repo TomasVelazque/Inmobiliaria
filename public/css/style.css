@@ -410,3 +410,165 @@ body{
     border-left: 5px solid #f1c40f;
     font-weight: bold;
 }
+
+/* Contenedor principal */
+.tabla-cont {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Título */
+.tabla-cont h1 {
+    margin-bottom: 20px;
+    color: #0a2540;
+    font-size: 26px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Botón crear usuario */
+.btn-crear-usuario {
+    background: #ffcc00;
+    color: #0a2540;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-bottom: 20px;
+}
+
+.btn-crear-usuario:hover {
+    background: #ffdb4d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.35);
+}
+
+/* Tabla */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* Header tabla */
+.tabla thead {
+    background: #0a2540;
+}
+
+.tabla thead th {
+    color: #ffffff;
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Body tabla */
+.tabla tbody tr {
+    border-bottom: 1px solid #e6e9ee;
+    transition: background 0.2s ease;
+}
+
+.tabla tbody tr:hover {
+    background-color: #fff9e6;
+}
+
+.tabla tbody td {
+    padding: 14px 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+/* Modal */
+.createModal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; 
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.createModal .modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto; 
+    max-height: 80vh; 
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Botón cerrar */
+.modal-content .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.modal-content h2, .modal-content h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #03a9f4;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #34495e;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-group select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* BOTONES DEL MODAL */
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+

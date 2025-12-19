@@ -30,3 +30,4 @@ Route::post('/logout', function(){
 //RUTAS DE USUARIO
 Route::post("/registrarUsuario", [UsuarioController::class, 'registrarUsuario']);
 Route::post("/iniciarSession", [UsuarioController::class, 'iniciarSession']);
+Route::post("/crearUsuario", [UsuarioController::class, 'crearUsuario']);
