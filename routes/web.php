@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RolController;
 
 //RUTAS PARA LAS VISTAS
 
@@ -31,3 +32,7 @@ Route::post('/logout', function(){
 Route::post("/registrarUsuario", [UsuarioController::class, 'registrarUsuario']);
 Route::post("/iniciarSession", [UsuarioController::class, 'iniciarSession']);
 Route::post("/crearUsuario", [UsuarioController::class, 'crearUsuario']);
+
+
+//RUTAS DE ROLES
+Route::get("/cargarRoles", [RolController::class, 'cargarRoles']);

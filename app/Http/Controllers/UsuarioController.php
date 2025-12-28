@@ -94,7 +94,7 @@ class UsuarioController
         if($validator->fails()){
             return response()->json([
                 'success' => false,
-                'message' => $validator->errors()->first()
+                'message' => $validator()->errors()->first()
             ]);
         }
 
@@ -117,10 +117,11 @@ class UsuarioController
     }
 
     //FUNCION PARA CREAR UN USUARIO DESDE EL PANEL DE ADMINISTRADOR
-    public function crearUsuario(){
+    public function crearUsuario(Request $request){
+
         $validator = Validator::make($request->all(),[
             'nombre_apellido' => 'required|min:5|max:100|regex:/^[\pL\s]+$/u',
-            'gmail' => 'required|email|unique:usuarios, gmail',
+            'gmail' => 'required|email|unique:usuarios,gmail',
             'telefono' => 'required|digits:10',
             'clave' => 'required|min:8|max:100',
             'rclave' => 'required|same:clave',
@@ -153,5 +154,30 @@ class UsuarioController
             'rol_id.integer' => "El campo rol debe ser un numero.",
             'rol_id.exists' => "El campo rol debe tener un valor existente."
         ]);
+
+        //SI OCURRE UN ERROR ENVIAMOS EL MENSAJE DE ERROR AL FRONT
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => $validator()->errors()->first()
+            ]);
+        }
+
+        Usuario::create([
+            'nombre_apellido' => $request->nombre_apellido,
+            'gmail' => $request->gmail,
+            'telefono' => $request->telefono,
+            'clave' => Hash::make($request->clave),
+            'estado' => $request->estado,
+            'rol_id' => $request->rol_id,
+            'fecha_creacion' => now(),
+        ]);
+
+        //SI TODO ESTE BLOQUE DE CODIGO SE EJECUTA MANDAMOS UN SUCCESS
+        return response()->json([
+            'success' => true,
+            'message' => '¡Usuario creado exitosamente!',
+        ]);
+
     }
 }

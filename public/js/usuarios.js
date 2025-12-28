@@ -118,7 +118,41 @@ function iniciarSession(){
 //ABRIR MODAL
 $('#btn-crear-usuario').on("click", function(){
     $('#createModal').fadeIn(200);
+    cargarRoles('#createRol');
 });
+
+//FUNCION PARA CARGAR LOS ROLES
+function cargarRoles(selectId, rolSeleccionado = null){
+    const select = $('#createRol');
+    if(select.length === 0) return;
+
+    $.ajax({
+        url: "cargarRoles",
+        method: "GET",
+        dataType: "json",
+        success: function(res){
+            if(!res.success) return;
+
+            select.empty();
+            select.append('<option value="">Seleccione un rol</option>');
+
+            res.roles.forEach(rol => {
+                let selected = rolSeleccionado == rol.id ? 'selected' : '';
+                select.append(`
+                    <option value="${rol.id}" ${select}>${rol.nombre_rol}</option>
+                `);
+            });
+        },
+         error: function (xhr) {
+            console.error(xhr.responseText);
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "No se pudieron cargar los roles."
+            });
+        }
+    })
+}
 
 function crearUsuario(){
     const formulario = $('#formCrearUsuario');
@@ -136,7 +170,7 @@ function crearUsuario(){
             estado: $("#createEstado").val(),
             rol_id: $("#createRol").val(),
             clave: $("#createClave").val(),
-            rclave: ("#createRClave").val(),
+            rclave: $("#createRClave").val(),
         }
 
         //AJAX
@@ -167,8 +201,8 @@ function crearUsuario(){
                 console.log(xhr.responseText)
                 Swal.fire({
                     icon: "error",
-                    title: "Ha ocurrido un error inesperado.",
-                    text: res.message,
+                    title: "ERROR",
+                    text: "Ha ocurrido un error inesperado."
                 });
             }
         })
